@@ -36,7 +36,14 @@ Finally you need to publish a configuration file by running the following Artisa
 
 ```
 
-php artisan config:publish ognjenm/reservations-calendar
+php artisan asset:publish ognjenm/reservations-calendar
+```
+
+Include css in your view
+
+```
+
+    {{ HTML::style('packages/ognjenm/reservations-calendar/css/gantti.css') }}
 ```
 
 ###Examples
@@ -89,3 +96,10 @@ $data[] = [
 
     }
 ```
+
+
+Render calendar
+```
+{{ ResCalendar::render($data,['title'=>'Hotel'])}}
+```
+

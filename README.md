@@ -1,5 +1,7 @@
 #Laravel 4 Booking calendar
 
+##Scrennshot
+
 ##Installation
 
 Require ognjenm/reservations-calendar in composer.json and run composer update.
@@ -103,3 +105,4 @@ Render calendar
 {{ ResCalendar::render($data,['title'=>'Hotel'])}}
 ```
 
+##Contributions are welcomed

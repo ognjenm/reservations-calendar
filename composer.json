@@ -1,6 +1,6 @@
 {
     "name": "ognjenm/reservations-calendar",
-    "description": "",
+    "description": "This is rewriten [https://github.com/bastianallgeier/gantti] Gantt Class to fit my needs Eg. To show multiple events (bookings) per resource and Laravel 4 compatibility",
     "authors": [
         {
             "name": "Ognjen Miletic",

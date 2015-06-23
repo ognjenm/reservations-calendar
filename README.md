@@ -1,4 +1,6 @@
 #Laravel 4 Booking calendar
+##About
+This is rewriten (bastianallgeier/gantti)[https://github.com/bastianallgeier/gantti] Gantt Class to fit my needs Eg. To show multiple events (bookings) per resource and Laravel 4 compatibility
 
 ##Screenshot
 

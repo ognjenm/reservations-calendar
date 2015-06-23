@@ -1,6 +1,8 @@
 #Laravel 4 Booking calendar
 
-##Scrennshot
+##Screenshot
+
+!(image)[http::]
 
 ##Installation
 

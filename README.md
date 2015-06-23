@@ -2,7 +2,7 @@
 
 ##Screenshot
 
-!(image)[https://raw.githubusercontent.com/ognjenm/reservations-calendar/master/calendar.png]
+![](https://raw.githubusercontent.com/ognjenm/reservations-calendar/master/calendar.png)
 
 ##Installation
 

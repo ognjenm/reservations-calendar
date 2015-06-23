@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Booking calendar by ognjenm</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Booking calendar</h1>
+        <h2>Laravel 4 room reservation calendar</h2>
+        <a href="https://github.com/ognjenm/reservations-calendar" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="laravel-4-booking-calendar" class="anchor" href="#laravel-4-booking-calendar" aria-hidden="true"><span class="octicon octicon-link"></span></a>Laravel 4 Booking calendar</h1>
+
+<h2>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h2>
+
+<p>This is rewriten <a href="https://github.com/bastianallgeier/gantti">https://github.com/bastianallgeier/gantti</a> Gantt Class to fit my needs Eg. To show multiple events (bookings) per resource and Laravel 4 compatibility</p>
+
+<h2>
+<a id="screenshot" class="anchor" href="#screenshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshot</h2>
+
+<p><img src="https://raw.githubusercontent.com/ognjenm/reservations-calendar/master/calendar.png" alt=""></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Require ognjenm/reservations-calendar in composer.json and run composer update.</p>
+
+<pre><code>{
+    "require": {
+        "laravel/framework": "4.2.*",
+        ...
+        "ognjenm/reservations-calendar": "*"
+    }
+    ...
+}
+</code></pre>
+
+<p>Composer will download the package. After the package is downloaded, open app/config/app.php and add the service provider and alias as below:</p>
+
+<pre><code>
+'providers' =&gt; array(
+    ...
+    'Ognjenm\ReservationsCalendar\ReservationsCalendarServiceProvider',
+),
+
+
+
+'aliases' =&gt; array(
+    ...
+    'ResCalendar'     =&gt; 'Ognjenm\ReservationsCalendar\Facades\ResCalendar',
+),
+
+</code></pre>
+
+<p>Finally you need to publish a configuration file by running the following Artisan command.</p>
+
+<pre><code>
+php artisan asset:publish ognjenm/reservations-calendar
+</code></pre>
+
+<p>Include css in your view</p>
+
+<pre><code>
+    {{ HTML::style('packages/ognjenm/reservations-calendar/css/gantti.css') }}
+</code></pre>
+
+<h3>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h3>
+
+<p>Prepare data </p>
+
+<pre><code>
+$data[] = [
+            'label' =&gt; 'Soba 1',
+            'info' =&gt; '2+1',
+            'class' =&gt; 'blue',
+            'events' =&gt; [
+
+                    [
+                    'label' =&gt; 'Ognjen Miletic',
+                    'tooltip' =&gt; '&lt;h5&gt;Potvrdjena rezervacija&lt;/h5&gt;&lt;br&gt;&lt;p&gt;od: 19.06.2015&lt;/p&gt;&lt;p&gt;do: 23.06.2015&lt;/p&gt;&lt;p&gt;Ukupno: 578 EUR&lt;/p&gt;',
+                    'url' =&gt; 'http://google.com',
+                    'start' =&gt; '2015-06-19',
+                    'end'   =&gt; '2015-06-23',
+                    'class' =&gt; '',
+                    'icon' =&gt; 'fa-arrow-down'
+                    ],
+                    [
+                            'label' =&gt; 'Madona i ekipa',
+                            'tooltip' =&gt; '&lt;h5&gt;Potvrdjena rezervacija&lt;/h5&gt;&lt;br&gt;
+&lt;p&gt;od: 19.06.2015&lt;/p&gt;&lt;p&gt;do: 23.06.2015&lt;/p&gt;&lt;p&gt;Ukupno: 1578 EUR&lt;/p&gt;',
+                            'start' =&gt; '2015-06-10',
+                            'end'   =&gt; '2015-06-19',
+                            'class' =&gt; 'checkout',
+                            'icon' =&gt; 'fa-sign-out'
+                    ],
+                    [
+                            'label' =&gt; 'Jovan Jovanovic Zmaj',
+                            'start' =&gt; '2015-06-23',
+                            'end'   =&gt; '2015-06-30',
+                            'class' =&gt; 'uncomfirmed',
+                            'icon' =&gt; 'fa-question'
+                    ],
+                    [
+                            'label' =&gt; 'Nikola Nikolic',
+                            'tooltip' =&gt; '&lt;h5&gt;This is some html&lt;/h5&gt;',
+                            'url' =&gt; 'http://google.com',
+                            'start' =&gt; '2015-06-30',
+                            'end'   =&gt; '2015-07-15',
+                            'class' =&gt; 'stay'
+                    ],
+            ]
+
+            ];
+
+    }
+</code></pre>
+
+<p>Render calendar</p>
+
+<pre><code>{{ ResCalendar::render($data,['title'=&gt;'Hotel'])}}
+</code></pre>
+
+<h2>
+<a id="contributions-are-welcomed" class="anchor" href="#contributions-are-welcomed" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributions are welcomed</h2>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/ognjenm/reservations-calendar/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/ognjenm/reservations-calendar/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/ognjenm/reservations-calendar"></a> is maintained by <a href="https://github.com/ognjenm">ognjenm</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>

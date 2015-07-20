@@ -1,6 +1,6 @@
-#Laravel 4 Booking calendar
+#Laravel 5 Booking calendar
 ##About
-This is rewriten [https://github.com/bastianallgeier/gantti] Gantt Class to fit my needs Eg. To show multiple events (bookings) per resource and Laravel 4 compatibility
+This is rewriten [https://github.com/bastianallgeier/gantti] Gantt Class to fit my needs Eg. To show multiple events (bookings) per resource and Laravel 5 compatibility
 
 ##Screenshot
 
@@ -13,7 +13,7 @@ Require ognjenm/reservations-calendar in composer.json and run composer update.
 ```
 {
     "require": {
-        "laravel/framework": "4.2.*",
+        "laravel/framework": "5.1.*",
         ...
         "ognjenm/reservations-calendar": "*"
     }
@@ -21,35 +21,34 @@ Require ognjenm/reservations-calendar in composer.json and run composer update.
 }
 ```
 
-Composer will download the package. After the package is downloaded, open app/config/app.php and add the service provider and alias as below:
+Composer will download the package. After the package is downloaded, open config/app.php and add the service provider and alias as below:
 
 ```
 
 'providers' => array(
     ...
-    'Ognjenm\ReservationsCalendar\ReservationsCalendarServiceProvider',
+    'Ognjenm\ReservationsCalendar\ReservationsCalendarServiceProvider:class',
 ),
 
 
 
 'aliases' => array(
     ...
-    'ResCalendar'     => 'Ognjenm\ReservationsCalendar\Facades\ResCalendar',
+    'ResCalendar'     => 'Ognjenm\ReservationsCalendar\Facades\ResCalendar:class',
 ),
 
 ```
 Finally you need to publish a configuration file by running the following Artisan command.
 
 ```
-
-php artisan asset:publish ognjenm/reservations-calendar
+php artisan vendor:publish --tag=public --force
 ```
 
 Include css in your view
 
 ```
+<link href="/public/vendor/ognjenm/calendar.css" rel="stylesheet" type="text/css">
 
-    {{ HTML::style('packages/ognjenm/reservations-calendar/css/gantti.css') }}
 ```
 
 ###Examples
@@ -106,7 +105,7 @@ $data[] = [
 
 Render calendar
 ```
-{{ ResCalendar::render($data,['title'=>'Hotel'])}}
+{!! ResCalendar::render($data,['title'=>'Hotel'])!!}
 ```
 
 ##Contributions are welcomed

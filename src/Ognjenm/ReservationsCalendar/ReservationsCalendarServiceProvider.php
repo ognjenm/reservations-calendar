@@ -18,7 +18,9 @@ class ReservationsCalendarServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('ognjenm/reservations-calendar');
+		$this->publishes([
+        __DIR__.'/../../../public' => public_path('vendor/ognjenm'),
+    ], 'public');
 	}
 
 	/**

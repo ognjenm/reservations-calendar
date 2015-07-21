@@ -27,14 +27,14 @@ Composer will download the package. After the package is downloaded, open config
 
 'providers' => array(
     ...
-    'Ognjenm\ReservationsCalendar\ReservationsCalendarServiceProvider:class',
+    'Ognjenm\ReservationsCalendar\ReservationsCalendarServiceProvider',
 ),
 
 
 
 'aliases' => array(
     ...
-    'ResCalendar'     => 'Ognjenm\ReservationsCalendar\Facades\ResCalendar:class',
+    'ResCalendar'     => 'Ognjenm\ReservationsCalendar\Facades\ResCalendar',
 ),
 
 ```
